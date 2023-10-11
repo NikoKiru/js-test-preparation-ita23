@@ -40,7 +40,77 @@ const weeklySalesDataExample = [
  * // Outputs { totalSales: 55, bestSellingItem: 'Banana', highestSalesDay: {date: '2023-09-26', totalSales: 30} }
  */
 
-function generateSalesReport(weeklySalesData) {
 
+function generateSalesReport(salesData) {
+    // total sales / set datatype
+    let totalSales = 0;
+
+    // best-selling item / set object type
+    let bestSellingItem = salesData[0].sales[0].item;
+
+    // day with the highest sales / set object type
+    let highestSalesDay = salesData[0];
+    let highestSalesDaySale = 0;
+
+    salesData.forEach((day) => {
+
+        // find best-selling item that day
+        // and calculate sales for that day
+        let dateBestSeller = day.sales[0].item;
+        let dateSales = 0;
+
+        for (const product of day.sales) {
+            const itemPrice = product.price;
+            const itemQuantity = product.quantity;
+            const itemSales = itemPrice * itemQuantity;
+
+            // add to total sales that day
+            dateSales += itemSales;
+
+            // if item sales if higher than current item
+            // set new best seller
+            if (itemSales > dateBestSeller)
+                dateBestSeller = product.item;
+
+            // if date sales is new highest day sale
+            // set new highest day sale and day
+            if (dateSales > highestSalesDaySale) {
+                highestSalesDaySale = dateSales;
+                highestSalesDay = day;
+            }
+        }
+
+        // check if best-selling item overall
+        if (dateBestSeller > bestSellingItem)
+            bestSellingItem = dateBestSeller;
+
+        // check if highest-sales that day
+        if (dateSales > highestSalesDaySale) {
+            highestSalesDay = dateSales;
+        }
+
+        // add to total sales overall
+        totalSales += dateSales;
+    });
+
+    return {
+        totalSales: totalSales,
+        bestSellingItem: bestSellingItem,
+        highestSalesDay: {
+            date: highestSalesDay.date,
+            totalSales: highestSalesDaySale
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
 

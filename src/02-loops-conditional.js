@@ -10,7 +10,11 @@
  */
 
 function getNextEven(n) {
-
+    for (let i = 1; i <= 2; i++) {
+        if ((n + i) % 2 === 0) {
+            return n + i
+        }
+    }
 }
 
 
@@ -27,8 +31,12 @@ function getNextEven(n) {
  */
 
 function isMultipleOf(n, m) {
-
-}
+    if (n % m === 0 ) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
 
 /**
@@ -42,6 +50,14 @@ function isMultipleOf(n, m) {
  * const anotherReversed = reverseString('world'); // anotherReversed will be 'dlrow'
  */
 
-function reverseString(str) {
 
+
+function reverseString(str) {
+    let reversedString = "";
+
+    for (let i = str.length - 1; i >= 0  ; i--) {
+          reversedString += str[i];
+    }
+    return reversedString;
 }
+

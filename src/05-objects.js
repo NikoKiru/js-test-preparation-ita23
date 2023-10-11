@@ -8,9 +8,13 @@
  * console.log(myBook.title); // Outputs the title of the book
  */
 function createBook() {
-
+    return {
+        title:"",
+        author:"",
+        year:0
+    }
 }
-
+console.log()
 
 /**
  * This function finds a book by its author from a given array of books.
@@ -24,7 +28,8 @@ function createBook() {
  * console.log(result); // Outputs {title: "Sample", author: "John Doe", year: 2020}
  */
 function findBookByAuthor(books, author) {
-
+    const book = books.find((element) => element.author === author);
+    return book;
 }
 
 
@@ -40,6 +45,9 @@ function findBookByAuthor(books, author) {
  * console.log(oldBooks); // Outputs {title: "A", year: 1990}
  */
 function getOlderBooks(books, year) {
-
+    let filteredArr= books.filter((element) => element.year < year);
+    return filteredArr;
 }
+
+
 

@@ -8,7 +8,9 @@
  * const greetJack = greetUser("Jack"); // greetJack will be "Hello, Jack"
  */
 
-
+function greetUser (name) {
+    return "Hello, " + name;
+}
 
 /**
  * This function converts a string to spinal case.
@@ -20,6 +22,14 @@
  * const spinal = toSpinalCase("This Is Spinal Tap"); // spinal will be "this-is-spinal-tap"
  */
 
+function toSpinalCase (str){
+    const strLowered = str.toLowerCase();
+    const replacedStr = strLowered.replaceAll(" ","-");
+
+
+    return replacedStr;
+}
+
 
 /**
  * This function calculates the time taken by light to travel a certain distance.
@@ -30,5 +40,9 @@
  * Usage:
  * const time = lightTravelTime(300000); // time will be 1
  */
+
+function lightTravelTime (distance) {
+    return distance / 300000;
+}
 
 
